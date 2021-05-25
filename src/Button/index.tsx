@@ -1,4 +1,5 @@
 import React, { MouseEventHandler, useState, useEffect } from 'react';
+import Loader from '../Loader';
 import styles from './index.less';
 import classnames from 'classnames';
 
@@ -8,6 +9,7 @@ interface IButtonProps {
   onClick?: MouseEventHandler;
   disabled?: boolean;
   ripple?: boolean;
+  loading?: boolean;
 }
 
 const Button: React.FC<IButtonProps> = ({
@@ -17,6 +19,7 @@ const Button: React.FC<IButtonProps> = ({
   onClick,
   disabled,
   ripple = false,
+  loading = false,
 }) => {
   const [isRipple, setIsRipple] = useState(false);
   const [coords, setCoords] = useState({ x: -1, y: -1 });
@@ -45,6 +48,17 @@ const Button: React.FC<IButtonProps> = ({
         onClick && onClick(e);
       }}
     >
+      {loading ? (
+        <>
+          <div className={styles.loadingContainer}>
+            <Loader show={loading} color="#fff"></Loader>
+          </div>
+          <span className={styles.loadingTip}>loading</span>
+        </>
+      ) : (
+        ''
+      )}
+
       {ripple && isRipple ? (
         <span
           className={styles.ripple}
@@ -56,7 +70,7 @@ const Button: React.FC<IButtonProps> = ({
       ) : (
         ''
       )}
-      <span className={styles.content}>{children}</span>
+      {!loading && <span className={styles.content}>{children}</span>}
     </button>
   );
 };

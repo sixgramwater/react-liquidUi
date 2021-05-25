@@ -41,3 +41,18 @@ export default () => (
   <Button ripple={true}>ClickMe</Button>
 );
 ```
+
+### Loading button
+
+```tsx
+import React from 'react';
+import { Button } from 'liquidUi';
+
+export default () => (
+  // <Loader show={true} hasMask={true}>
+  // </Loader>
+  <Button ripple={true} loading={true}>
+    ClickMe
+  </Button>
+);
+```
