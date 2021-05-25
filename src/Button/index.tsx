@@ -35,7 +35,7 @@ const Button: React.FC<IButtonProps> = ({
     <button
       className={classnames(
         styles.button,
-        type ? styles.type : styles.primary,
+        type ? styles[type] : styles.primary,
         ripple ? '' : styles.btnHover,
       )}
       onClick={(e) => {

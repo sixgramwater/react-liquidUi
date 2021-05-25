@@ -17,21 +17,32 @@
   cursor: pointer;
   border-radius: 4px;
   overflow: hidden;
-  color: #fff;
+  // color: #fff;
   position: relative;
   padding: 10px 16px;
   transition: all 250ms ease-in-out;
+  &.plain {
+    background: #fff;
+    color: #000;
+    border: 1px #d9d9d9 solid;
+    &.btnHover:hover {
+      border: 1px solid #1a90ff;
+      color: #1a90ff;
+    }
+  }
   &.primary {
-    background: hsl(209, 100%, 55%);
+    background: #1a90ff;
+    color: #fff;
+    &.btnHover:hover {
+      background: #63a4ff;
+    }
   }
   &.success {
     background: hsl(100, 70%, 42%);
+    color: #fff;
   }
 }
 
-.btnHover:hover {
-  background: #63a4ff !important;
-}
 .btnActive {
   background: #63a4ff !important;
 }
