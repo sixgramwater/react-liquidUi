@@ -1,0 +1,54 @@
+@keyframes rippleEffect {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(10);
+    opacity: 0.375;
+  }
+  100% {
+    transform: scale(35);
+    opacity: 0;
+  }
+}
+.button {
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  overflow: hidden;
+  color: #fff;
+  position: relative;
+  padding: 10px 16px;
+  transition: all 250ms ease-in-out;
+  &.primary {
+    background: hsl(209, 100%, 55%);
+  }
+  &.success {
+    background: hsl(100, 70%, 42%);
+  }
+}
+
+.btnHover:hover {
+  background: #63a4ff !important;
+}
+.btnActive {
+  background: #63a4ff !important;
+}
+
+.ripple {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  background: #63a4ff;
+  display: block;
+  content: '';
+  border-radius: 9999px;
+  opacity: 1;
+  animation: rippleEffect 0.9s ease 1 forwards;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+}

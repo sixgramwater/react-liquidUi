@@ -1,11 +1,10 @@
-
 ## Foo
 
 Demo:
 
 ```tsx
 import React from 'react';
-import { Foo } from 'react-liquidUi';
+import { Foo } from 'liquidUi';
 
 export default () => <Foo title="First Demo" />;
 ```
