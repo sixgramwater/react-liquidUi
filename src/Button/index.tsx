@@ -51,7 +51,7 @@ const Button: React.FC<IButtonProps> = ({
       {loading ? (
         <>
           <div className={styles.loadingContainer}>
-            <Loader show={loading} color="#fff"></Loader>
+            <Loader show={loading} color="#fff" size={16}></Loader>
           </div>
           <span className={styles.loadingTip}>loading</span>
         </>

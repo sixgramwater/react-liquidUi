@@ -1,9 +1,14 @@
+@keyframes rotate {
+  100% {
+    rotate: 360deg;
+  }
+}
 .inputWrap {
   position: relative;
   display: inline-block;
   .inputInner {
     border-radius: 2px;
-    padding: 4px 6px;
+    padding: 4px 25px 4px 8px;
     height: 32px;
     box-sizing: border-box;
     border: 1px solid hsv(0, 0, 85%);
@@ -26,12 +31,22 @@
 
   .inputIcon {
     position: absolute;
-    right: 10px;
+    height: 16px;
+    right: 8px;
     top: 50%;
     transform: translateY(-50%);
+    color: rgba(0, 0, 0, 0.2);
+    transition: color 250ms ease-in-out;
     cursor: pointer;
     &:hover {
       color: rgba(0, 0, 0, 0.65);
     }
+  }
+}
+
+.iconRotate {
+  animation: rotate 300ms ease-in 1 forwards;
+  &:hover {
+    animation: rotate 300ms ease-in 1 forwards;
   }
 }

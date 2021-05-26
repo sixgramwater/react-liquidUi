@@ -6,9 +6,9 @@ import styles from './index.less';
 
 interface IconProps {
   type: keyof typeof Md;
-  size: string;
+  size?: string;
   // rotation: number,
-  style: any;
+  style?: any;
 }
 
 const Icon: React.FC<IconProps> = ({ type, size, style }) => {
