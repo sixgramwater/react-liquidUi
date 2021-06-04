@@ -2,7 +2,11 @@ import React from 'react';
 import './index.less';
 
 const Switch = () => {
-  return <></>;
+  return (
+    <button className="switch">
+      <div className="switch-handle"></div>
+    </button>
+  );
 };
 
 export default Switch;
