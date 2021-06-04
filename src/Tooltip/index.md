@@ -8,7 +8,7 @@ import { Tooltip } from 'liquidUi';
 
 export default () => (
   <Tooltip text="show tooltip">
-    <h3>hover me</h3>
+    <p>this is a sample paragraph</p>
   </Tooltip>
 );
 ```

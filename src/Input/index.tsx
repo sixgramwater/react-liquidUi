@@ -13,6 +13,7 @@ interface IInputProps {
   icon?: React.ReactNode;
   autoFocus?: boolean;
   clearable?: boolean;
+  type?: 'input' | 'password';
 }
 
 const Input: React.FC<IInputProps> = ({
@@ -25,6 +26,7 @@ const Input: React.FC<IInputProps> = ({
   icon,
   autoFocus = false,
   clearable = false,
+  type = 'input',
 }) => {
   let inputRef: any = React.useRef();
   const [inputValue, setInputValue] = React.useState(
@@ -70,11 +72,12 @@ const Input: React.FC<IInputProps> = ({
   return (
     <div className={styles.inputWrap}>
       <input
-        type="text"
+        type={type}
         ref={inputRef}
         className={classnames(
           styles.inputInner,
           className ? styles[className] : '',
+          clearable ? styles.clearablePadding : '',
         )}
         onChange={handleChange}
         placeholder={placeholder}

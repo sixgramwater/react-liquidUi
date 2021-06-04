@@ -42,3 +42,19 @@ export default () => {
   );
 };
 ```
+
+### 密码
+
+```tsx
+import React from 'react';
+import { Input } from 'liquidUi';
+
+export default () => {
+  // const [value, setValue] = React.useState('');
+  return (
+    <>
+      <Input type="password" />
+    </>
+  );
+};
+```
