@@ -1,5 +1,6 @@
 .switch {
   display: inline-block;
+  cursor: pointer;
   position: relative;
   margin: 0;
   padding: 0;
@@ -7,10 +8,41 @@
   border-radius: 100px;
   min-width: 44px;
   height: 22px;
-  &.checked {
-    background: #1890ff;
-  }
+  transition: all 200ms ease-in-out;
+  // &.checked {
+  //   background: #1890ff;
+  // }
+}
+.switch-checked {
+  background: #1890ff;
 }
 
 .switch-handle {
+  height: 18px;
+  width: 18px;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: all 250ms ease-in-out;
+  &::before {
+    position: absolute;
+    height: 18px;
+    width: 18px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 100px;
+    background: #fff;
+    content: '';
+  }
+  &.checked {
+    // calc必须带空格
+    left: calc(100% - 20px);
+  }
 }
+
+// .switch-handle .checked{
+//   left: calc(100%-20px);
+
+// }

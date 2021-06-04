@@ -6,3 +6,4 @@ export { default as Input } from './Input';
 export { default as Icon } from './Icon';
 export { default as Sidebar } from './Sidebar';
 export { default as Modal } from './Modal';
+export { default as Switch } from './Switch';
