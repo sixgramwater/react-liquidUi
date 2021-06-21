@@ -1,0 +1,45 @@
+.message-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 1050;
+
+  .message {
+    text-align: center;
+    margin-top: 20px;
+    .message-content {
+      display: inline-flex;
+      background: #fff;
+      padding: 10px 20px;
+      font-size: 14px;
+      box-shadow: 0 0.5rem 1rem rgba(#000, 0.15);
+    }
+
+    .icon {
+      margin-right: 4px;
+      margin-top: 2px;
+    }
+  }
+}
+
+.slide-in-top-enter {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+.slide-in-top-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: transform 200ms ease-in, opacity 200ms ease-in-out;
+}
+
+.slide-in-top-exit {
+  opacity: 1;
+}
+
+.slide-in-top-exit-active {
+  opacity: 0;
+  transform: translateY(0);
+  transition: transform 300ms linear 100ms, opacity 300ms ease-in-out;
+}

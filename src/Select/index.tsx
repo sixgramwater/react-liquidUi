@@ -26,13 +26,19 @@ const useOutsideAlerter = (
   }, [ref]);
 };
 
-const Option = () => {
-  return <div className="select-item"></div>;
+interface IOptionProps {
+  onClick?: () => void;
+  key?: any;
+  active?: boolean;
+}
+
+const Option: React.FC<IOptionProps> = ({ children }) => {
+  return <div className="select-item">{children}</div>;
 };
 
-const Select: React.FC<ISelectProps> = () => {
-  const [showDropDown, setShowDropDown] = useState(true);
-  const [focused, setFocused] = useState(true);
+const Select: React.FC<ISelectProps> = ({ children }) => {
+  const [showDropDown, setShowDropDown] = useState(false);
+  const [focused, setFocused] = useState(false);
   const [activeOption, setActiveOption] = useState(-1);
   const selectRef = useRef() as React.MutableRefObject<HTMLDivElement>;
   useOutsideAlerter(selectRef, () => {
