@@ -19,6 +19,7 @@ const App = () => {
         <Menu.Item>dropdown 3</Menu.Item>
         <Menu.Item>dropdown 4</Menu.Item>
       </Menu.Submenu>
+      <Menu.Item>link 3</Menu.Item>
     </Menu>
   );
 };
