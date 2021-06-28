@@ -109,6 +109,7 @@ const AutoComplete: React.FC<AutoCompleteProps> = (props) => {
   return (
     <div className="liquid-auto-complete">
       <Input
+        value={inputValue}
         onChange={(e) => handleChange(e)}
         // defaultValue={defaultValue}
       />

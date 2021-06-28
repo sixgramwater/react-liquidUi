@@ -14,11 +14,12 @@ export interface InputProps {
   autoFocus?: boolean;
   clearable?: boolean;
   type?: 'input' | 'password';
+  value: string;
 }
 
 const Input: React.FC<InputProps> = ({
   onChange,
-  // value,
+  value,
   placeholder = '',
   defaultValue,
   className,
@@ -79,6 +80,7 @@ const Input: React.FC<InputProps> = ({
         onChange={handleChange}
         placeholder={placeholder}
         defaultValue={defaultValue}
+        value={value}
         // value={inputValue}
         // autoFocus
         // value={inputValue}
