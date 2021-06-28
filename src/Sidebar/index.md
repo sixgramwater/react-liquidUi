@@ -7,10 +7,10 @@ import React from 'react';
 import { Sidebar, Button } from 'liquidUi';
 const [visible, setVisible] = React.useState(false);
 export default () => (
-  <div>
+  <>
     <Sidebar
       visible={visible}
-      onMaskClick={() => {
+      onClose={() => {
         setVisible(false);
       }}
     />
@@ -21,6 +21,6 @@ export default () => (
     >
       click
     </Button>
-  </div>
+  </>
 );
 ```

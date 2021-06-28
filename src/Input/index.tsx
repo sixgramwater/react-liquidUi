@@ -3,11 +3,11 @@ import styles from './index.less';
 import classnames from 'classnames';
 import Icon from '../Icon';
 
-interface IInputProps {
+export interface InputProps {
   className?: string;
-  onChange?: (e: React.ChangeEvent) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onIconClick?: (value: string) => void;
-  value?: string;
+  // value?: string;
   placeholder?: string;
   defaultValue?: string;
   icon?: React.ReactNode;
@@ -16,9 +16,9 @@ interface IInputProps {
   type?: 'input' | 'password';
 }
 
-const Input: React.FC<IInputProps> = ({
+const Input: React.FC<InputProps> = ({
   onChange,
-  value,
+  // value,
   placeholder = '',
   defaultValue,
   className,
@@ -29,16 +29,16 @@ const Input: React.FC<IInputProps> = ({
   type = 'input',
 }) => {
   let inputRef: any = React.useRef();
-  const [inputValue, setInputValue] = React.useState(
-    defaultValue ? defaultValue : '',
-  );
+  // const [inputValue, setInputValue] = React.useState(
+  //   defaultValue ? defaultValue : '',
+  // );
   const handleChange = (e: any) => {
-    setInputValue(inputRef.current.value);
+    // setInputValue(inputRef.current.value);
     // if(!onChange) {
     //   return;
     // }
     let event = e;
-    const originalInputValue = inputRef.current.value;
+    // const originalInputValue = inputRef.current.value;
     if (e.type === 'click') {
       // console.log('clear');
       event = Object.create(e);
@@ -46,10 +46,7 @@ const Input: React.FC<IInputProps> = ({
       event.currentTarget = inputRef.current;
       // change target ref value cause e.target.value should be '' when clear input
       inputRef.current.value = '';
-      onChange &&
-        onChange(
-          event as React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-        );
+      onChange && onChange(event as React.ChangeEvent<HTMLInputElement>);
       // reset target ref value
       // inputRef.current.value = originalInputValue;
       console.log(inputRef.current.value);

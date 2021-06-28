@@ -7,6 +7,7 @@ interface ILoaderProps {
   size?: number;
   hasMask?: boolean;
   color?: string;
+  className?: string;
 }
 
 const Loader: React.FC<ILoaderProps> = ({
@@ -14,6 +15,7 @@ const Loader: React.FC<ILoaderProps> = ({
   size = 24,
   hasMask = false,
   color,
+  className,
 }) => {
   return (
     <div className={styles.loaderContainer}>
@@ -33,7 +35,11 @@ const Loader: React.FC<ILoaderProps> = ({
         <circle cx="12" cy="12" r="10" />
       </svg>
       <div
-        className={classnames(styles.mask, hasMask ? styles.visible : '')}
+        className={classnames(
+          styles.mask,
+          hasMask ? styles.visible : '',
+          className,
+        )}
       ></div>
     </div>
   );

@@ -11,3 +11,4 @@ export { default as Select } from './Select';
 export { default as Message } from './Message';
 export { default as Menu } from './Menu';
 export { default as Tabs } from './Tabs';
+export { default as AutoComplete } from './AutoComplete';

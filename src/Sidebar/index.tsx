@@ -1,44 +1,54 @@
 import React, { useEffect, useState } from 'react';
-import classnames from 'classnames';
+// import classnames from 'classnames';
 import './index.less';
 import classNames from 'classnames';
+import Transition from '../Transition';
+import { CSSTransition } from 'react-transition-group';
 
 interface ISidebarProps {
   // width?: number;
   visible?: boolean;
-  onMaskClick?: () => void;
+  onClose?: () => void;
 }
 
 const Sidebar: React.FC<ISidebarProps> = ({
   children,
-  visible,
-  onMaskClick,
+  visible = false,
+  onClose,
+  // onMaskClick,
 }) => {
   // const [visible, setVisible] = React.useState(false);
-  const [show, setShow] = useState(false);
-  useEffect(() => {
-    setShow(visible ? true : false);
-  }, [visible]);
+  // const [show, setShow] = useState(false);
+  // useEffect(() => {
+  //   setShow(visible ? true : false);
+  // }, [visible]);
   const handleClickMask = () => {
-    onMaskClick && onMaskClick();
-    setShow(false);
+    onClose && onClose();
+    // setShow(false);
   };
   return (
+    // <CSSTransition
+    //     in={visible}
+    //     classNames="slide-in"
+    //     timeout={300}
+    //     unmountOnExit
+    //   >
     <div className="sidebar">
       <div
         className={classNames(
           'sidebar-container',
-          show ? 'visible' : 'inVisible',
+          visible ? 'visible' : 'invisible',
         )}
       >
         {children}
       </div>
       <div
-        className={classnames('sidebar-mask', show ? 'visible' : '')}
-        onClick={handleClickMask}
+        className={classNames('sidebar-mask', visible ? 'visible' : '')}
+        onClick={onClose}
       ></div>
       {/* <button onClick={()=>{setShow(!show)}}>click</button> */}
     </div>
+    // </CSSTransition>
   );
 };
 
