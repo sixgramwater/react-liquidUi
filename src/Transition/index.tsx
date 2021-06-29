@@ -29,7 +29,7 @@ const Transition: React.FC<TransitionProps> = (props) => {
 
 Transition.defaultProps = {
   unmountOnExit: true,
-  appear: true,
+  // appear: false,
 };
 
 export default Transition;

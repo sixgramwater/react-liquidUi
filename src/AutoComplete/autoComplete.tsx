@@ -4,6 +4,7 @@ import Input, { InputProps } from '../Input';
 import Loader from '../Loader';
 import useOutsideAlerter from '../Hooks/useOutsideAlerter';
 import useDebounce from '../Hooks/useDebounce';
+import Transition from '../Transition';
 import './index.less';
 
 interface DataSourceObject {
@@ -37,6 +38,11 @@ const AutoComplete: React.FC<AutoCompleteProps> = (props) => {
   const [highlightIndex, setHighlightIndex] = useState(-1); // items highlighted in suggestion list
   const debouncedValue = useDebounce(inputValue); // debounce
   const triggerSearch = useRef(false);
+  const autoCompleteRef = useRef() as React.MutableRefObject<HTMLDivElement>;
+  useOutsideAlerter(autoCompleteRef, () => {
+    setShowDropdown(false);
+    setLoading(false);
+  });
   // useOutsideAlerter()
   useEffect(() => {
     // debouncedValue不为空, 且不是一开始的默认值
@@ -46,7 +52,7 @@ const AutoComplete: React.FC<AutoCompleteProps> = (props) => {
         setLoading(true);
         setSuggestions([]);
         results.then((data) => {
-          setLoading(true);
+          setLoading(false);
           setSuggestions(data);
           // optional
           if (data.length > 0) {
@@ -76,15 +82,26 @@ const AutoComplete: React.FC<AutoCompleteProps> = (props) => {
   const handleSelectItem = (item: DataSourceType) => {
     setInputValue(item.value);
     onChange && onChange(item.value);
-    // setSuggestions([]);
-    // triggerSearch.current = false;
+    triggerSearch.current = false;
+    setTimeout(() => {
+      setShowDropdown(false);
+      // setSuggestions([]);
+    }, 300);
     onSelect && onSelect(item);
   };
   const renderDropdown = () => {
     return (
-      <>
+      <Transition
+        timeout={300}
+        classNames="zoom-in-top"
+        in={showDropdown || loading}
+      >
         <ul className="liquid-suggestion-list">
-          {loading && <Loader show className="liquid-suggestion-loading" />}
+          {loading && (
+            <div className="liquid-suggestion-loading">
+              <Loader show={true} className="liquid-suggestion-loading" />
+            </div>
+          )}
           {suggestions.map((item, index) => {
             const itemClass = className('suggestion-item', {
               'is-active': index === highlightIndex,
@@ -103,11 +120,11 @@ const AutoComplete: React.FC<AutoCompleteProps> = (props) => {
             );
           })}
         </ul>
-      </>
+      </Transition>
     );
   };
   return (
-    <div className="liquid-auto-complete">
+    <div className="liquid-auto-complete" ref={autoCompleteRef}>
       <Input
         value={inputValue}
         onChange={(e) => handleChange(e)}
