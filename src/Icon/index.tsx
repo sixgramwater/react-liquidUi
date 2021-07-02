@@ -1,19 +1,46 @@
 import * as Fa from 'react-icons/fa';
 import * as Md from 'react-icons/md';
+import {IconBaseProps} from 'react-icons';
 // import {  } from 'react-icons';
 import React from 'react';
-import styles from './index.less';
+import './index.less';
+import classNames from 'classnames';
 
-interface IconProps {
+export type ThemeProps =
+  'primary' |
+  'secondary' |
+  'success' |
+  'info' |
+  'warning' |
+  'danger'
+
+interface IconProps extends IconBaseProps {
+
   type: keyof typeof Md;
   size?: string;
   // rotation: number,
-  style?: any;
+  style?: React.CSSProperties;
+  theme?: ThemeProps;
+  onClick?: (e: React.MouseEvent)=>void;
 }
 
-const Icon: React.FC<IconProps> = ({ type, size, style }) => {
+const Icon: React.FC<IconProps> = (props) => {
+  const { 
+    type, 
+    size, 
+    style, 
+    className,
+    theme,
+    onClick,
+  } = props;
+  const classes = classNames('liquid-icon', className, theme?`icon-${theme}`:'');
   const IconComponent = Md[type];
-  return <IconComponent size={size} style={style} />;
+  return (
+    <span className={classes} onClick={onClick}>
+      <IconComponent size={size} style={style}/>
+    </span>
+  ) 
+ 
 };
 
 export default Icon;

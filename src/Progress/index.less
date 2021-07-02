@@ -1,0 +1,36 @@
+@theme-colors: {
+  primary: #1890ff;
+  secondary: #6c757d;
+  success: #52c41a;
+  info: #17a2b8;
+  danger: #dc3545;
+  warning: #fadb14;
+}
+
+
+
+.liquid-progress {
+  .liquid-progress-outer{
+    font-size: 0.75rem;
+    background: #e9ecef;
+    line-height: 1.25;
+    &, .liquid-progress-inner {
+      height: 100%;
+      border-radius: .25rem;
+    }
+  }
+
+  .liquid-progress-inner{
+    // height: 100%;
+    // border-radius: 6px;
+    color: white;
+    padding: 0 0.25rem;
+    transition: width 250ms linear;
+  }
+}
+
+each(@theme-colors, {
+  .color-@{key} {
+    background-color: @value
+  }
+})

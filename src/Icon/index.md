@@ -31,3 +31,17 @@ export default () => {
   );
 };
 ```
+
+### theme
+```tsx
+import React from 'react';
+import { Icon } from 'liquidUi';
+
+export default () => {
+  return(
+    <Icon  type="MdSearch" theme="info"/>
+  )
+  
+
+}
+```

@@ -1,0 +1,23 @@
+@theme-colors: {
+  primary: #1890ff;
+  secondary: #6c757d;
+  success: #52c41a;
+  info: #17a2b8;
+  danger: #dc3545;
+  warning: #fadb14;
+}
+
+each(@theme-colors, {
+  .icon-@{key} {
+    color: @value
+  }
+})
+
+
+.liquid-icon {
+  // vertical-align: middle;
+  display: flex;
+  align-items: center;
+  // height: 14px;
+  
+}
