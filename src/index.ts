@@ -15,5 +15,5 @@ export { default as AutoComplete } from './AutoComplete';
 export { default as Upload } from './Upload';
 export { default as Progress } from './Progress';
 export { default as VirtualizedList } from './VirtualizedList/virtualizedList';
-export { default as InfiniteScroll } from './InfiniteScroll/scroll';
+export { default as InfiniteScroll } from './InfiniteScroll/index';
 // export { default as InfiniteScrollTest } from './InfiniteScroll/test';
