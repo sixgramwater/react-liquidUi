@@ -2,7 +2,7 @@
 
 ```tsx
 import React, { useState } from 'react';
-import { InfiniteScroll } from 'liquidUi';
+import { InfiniteScroll, Loader } from 'liquidUi';
 
 const NUMBERS_PER_PAGE = 10;
 
@@ -35,6 +35,7 @@ const App = () => {
         hasMore={hasMoreData}
         isLoading={loading}
         onBottomHit={loadMoreNumbers}
+        loader={<Loader />}
       >
         <ul>
           {numbers.map((n) => (
